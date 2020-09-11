@@ -7,9 +7,17 @@ import { Component } from '@angular/core';
 export class ServerComponent {
   // tslint:disable-next-line: no-inferrable-types
   serverId: number = 10;
-  serverStatus: string = 'offline';
+  serverStatus = 'offline';
 
-  getServerStatus() {
+  constructor() {
+    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+  }
+
+  getServerStatus(): string {
     return this.serverStatus;
+  }
+
+  getColor(): string {
+    return this.serverStatus === 'online' ? 'green' : 'red';
   }
 }
