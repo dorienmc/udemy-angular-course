@@ -1,0 +1,11 @@
+<button class="btn btn-primary" (click)="toggleDetails()">{{ displayDetails ? 'Hide' : 'Display' }} Details</button>
+<p *ngIf="displayDetails"> This is a paragraph that can be hidden by the button above</p>
+
+<br>
+<h4>Click log</h4>
+<p
+  *ngFor="let log of clickLog; let i=index"
+  [ngStyle]="{backgroundColor: getColor(i)}"
+  [ngClass]="{paintWhite: i >= 4}"
+  >{{ log }}</p>
+
