@@ -1,27 +1,27 @@
-import { Directive, Renderer2, OnInit, ElementRef, HostListener, HostBinding } from '@angular/core';
+import { Directive, ElementRef, HostListener, HostBinding, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[appBetterHighlight]'
 })
-export class BetterHighlightDirective implements OnInit {
+export class BetterHighlightDirective implements OnInit{
+  @Input() defaultColor = 'transparant';
+  @Input('appBetterHighlight') highLightColor = 'blue';
   @HostBinding(`style.backgroundColor`) backgroundColor = 'transparent';
 
-  constructor(private elRef: ElementRef, private rendered: Renderer2) { }
+  constructor(private elRef: ElementRef) { }
 
   ngOnInit(): void {
-    // this.rendered.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
+    this.backgroundColor = this.defaultColor;
   }
 
   // tslint:disable-next-line: typedef
   @HostListener('mouseenter') mouseOver(eventData: Event) {
-    // this.rendered.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
-    this.backgroundColor = 'blue';
+    this.backgroundColor = this.highLightColor;
   }
 
   // tslint:disable-next-line: typedef
   @HostListener('mouseleave') mouseLeave(eventData: Event) {
-    // this.rendered.setStyle(this.elRef.nativeElement, 'background-color', 'transparent');
-    this.backgroundColor = 'transparent';
+     this.backgroundColor = this.defaultColor;
   }
 
 }

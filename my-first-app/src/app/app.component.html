@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-xs-12">
       <p appBasicHighlight>Style my with basic highlight</p>
-      <p appBetterHighlight>Styled with the better highlight</p>
+      <!-- <p appBetterHighlight [defaultColor]="'orange'" [highLightColor]="'red'">Styled with the better highlight</p> -->
+      <p [appBetterHighlight]="'red'" defaultColor="orange">Styled with the better highlight</p>
       <hr>
 
       <button
