@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="row">
+    <app-game-control></app-game-control>
+  </div>
+  <hr>
   <app-cockpit (serverCreated)="onServerAdded($event)" (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
