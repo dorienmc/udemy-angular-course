@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   serverElements = [{type: 'server', name: 'Testserver', content: 'Just a test'}];
-  evenElements = [];
-  oddElements = [];
+  evenNumbers = [];
+  oddNumbers = [];
 
   onServerAdded(serverData: {serverName: string, serverContent: string}): void {
     this.serverElements.push({
@@ -34,12 +34,12 @@ export class AppComponent {
     this.serverElements.splice(0, 1);
   }
 
-  onNumberGenerated(data: {generatedNumber: number}): void {
-    const n = data.generatedNumber;
+  onNumberGenerated(data: number): void {
+    const n = data;
     if (n % 2 === 0) {
-      this.evenElements.push(n);
+      this.evenNumbers.push(n);
     } else {
-      this.oddElements.push(n);
+      this.oddNumbers.push(n);
     }
   }
 }

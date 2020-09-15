@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./even.component.css']
 })
 export class EvenComponent {
-  @Input() theNumber: number;
+  @Input() number: number;
 
   constructor() { }
 

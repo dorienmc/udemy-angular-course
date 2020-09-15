@@ -6,8 +6,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./game-control.component.css']
 })
 export class GameControlComponent {
-  @Output() generateNumber = new EventEmitter<{ generatedNumber: number}>();
-  emitterRef;
+  @Output() generateNumber = new EventEmitter<number>();
+  interval;
   currentNumber: number;
 
   constructor() {
@@ -15,17 +15,15 @@ export class GameControlComponent {
 
   onStartGame(): void {
     this.currentNumber = 0;
-    this.emitterRef = setInterval(() => {
+    this.interval = setInterval(() => {
       const randomNumber = Math.floor((Math.random() * 4) + 1);
       this.currentNumber += randomNumber;
-      this.generateNumber.emit({
-        generatedNumber: this.currentNumber
-      });
+      this.generateNumber.emit(this.currentNumber);
     }, 1000);
   }
 
   onStopGame(): void {
-    clearInterval(this.emitterRef);
+    clearInterval(this.interval);
   }
 
 }
