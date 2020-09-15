@@ -1,28 +1,26 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-game-control',
   templateUrl: './game-control.component.html',
   styleUrls: ['./game-control.component.css']
 })
-export class GameControlComponent implements OnInit {
+export class GameControlComponent {
   @Output() generateNumber = new EventEmitter<{ generatedNumber: number}>();
   emitterRef;
   currentNumber: number;
 
   constructor() {
-    this.currentNumber = 1;
    }
 
-  ngOnInit(): void {
-  }
-
   onStartGame(): void {
+    this.currentNumber = 0;
     this.emitterRef = setInterval(() => {
+      const randomNumber = Math.floor((Math.random() * 4) + 1);
+      this.currentNumber += randomNumber;
       this.generateNumber.emit({
         generatedNumber: this.currentNumber
       });
-      this.currentNumber++;
     }, 1000);
   }
 
