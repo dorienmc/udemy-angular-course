@@ -19,43 +19,43 @@ export class ServerElementComponent implements OnInit,
   @ContentChild('contentParagraph', {static: true}) content: ElementRef;
 
   constructor() {
-    console.log('constructor called');
+    // console.log('constructor called');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges called');
-    console.log(changes);
+    // console.log('ngOnChanges called');
+    // console.log(changes);
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit called');
-    console.log('Text content:' + this.header.nativeElement.textContent);
-    console.log('Text content of paragraph:' + this.content.nativeElement.textContent);
+    // console.log('ngOnInit called');
+    // console.log('Text content:' + this.header.nativeElement.textContent);
+    // console.log('Text content of paragraph:' + this.content.nativeElement.textContent);
   }
 
   ngDoCheck(): void {
-    console.log('ngDoCheck called');
+    // console.log('ngDoCheck called');
   }
 
   ngAfterContentInit(): void {
-    console.log('ngAfterContentInit called');
+    // console.log('ngAfterContentInit called');
   }
 
   ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked called');
+    // console.log('ngAfterContentChecked called');
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit called');
-    console.log('Text content:' + this.header.nativeElement.textContent);
-    console.log('Text content of paragraph:' + this.content.nativeElement.textContent);
+    // console.log('ngAfterViewInit called');
+    // console.log('Text content:' + this.header.nativeElement.textContent);
+    // console.log('Text content of paragraph:' + this.content.nativeElement.textContent);
   }
 
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked called');
+    // console.log('ngAfterViewChecked called');
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy called');
+    // console.log('ngOnDestroy called');
   }
 }

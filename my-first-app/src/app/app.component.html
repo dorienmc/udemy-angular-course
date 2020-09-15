@@ -1,7 +1,16 @@
 <div class="container">
   <div class="row">
-    <app-game-control></app-game-control>
+    <app-game-control (generateNumber)="onNumberGenerated($event)"></app-game-control>
   </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <app-even *ngFor="let evenNumber of evenElements" [theNumber]="evenNumber"></app-even>
+    </div>
+    <div class="col-xs-6">
+      <app-odd *ngFor="let oddNumber of oddElements" [theNumber]="oddNumber"></app-odd>
+    </div>
+  </div>
+
   <hr>
   <app-cockpit (serverCreated)="onServerAdded($event)" (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
   <hr>

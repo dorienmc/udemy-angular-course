@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -7,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./game-control.component.css']
 })
 export class GameControlComponent implements OnInit {
-  @Output() gameStarted = new EventEmitter<{gameNumber: number}>();
-  emitterRef: NodeJS.Timeout;
+  @Output() generateNumber = new EventEmitter<{ generatedNumber: number}>();
+  emitterRef;
   currentNumber: number;
 
   constructor() {
@@ -20,8 +19,8 @@ export class GameControlComponent implements OnInit {
 
   onStartGame(): void {
     this.emitterRef = setInterval(() => {
-      this.gameStarted.emit({
-        gameNumber: this.currentNumber
+      this.generateNumber.emit({
+        generatedNumber: this.currentNumber
       });
       this.currentNumber++;
     }, 1000);

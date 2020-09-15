@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-even',
   templateUrl: './even.component.html',
   styleUrls: ['./even.component.css']
 })
-export class EvenComponent implements OnInit {
+export class EvenComponent {
+  @Input() theNumber: number;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
