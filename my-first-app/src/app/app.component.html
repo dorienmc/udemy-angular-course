@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+      <p appBasicHighlight>Style my with basic highlight</p>
+      <hr>
+
       <button
         class="btn btn-primary"
         (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
@@ -10,7 +13,8 @@
           class="list-group-item"
           *ngFor="let number of numbers"
           [ngClass]="{odd: number % 2 !== 0}"
-          [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparant'}">
+          [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparant'}"
+          >
           {{ number }}
         </li>
       </ul>
