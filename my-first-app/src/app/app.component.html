@@ -7,14 +7,20 @@
       <br><br>
       <ul class="list-group">
         <li
-          class="list-group-item" *ngFor="let number of numbers">
+          class="list-group-item"
+          *ngFor="let number of numbers"
+          [ngClass]="{odd: number % 2 !== 0}"
+          [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparant'}">
           {{ number }}
         </li>
       </ul>
       <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let number of oddNumbers">
+          <li
+            class="list-group-item odd"
+            *ngFor="let number of oddNumbers"
+            [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparant'}">
             {{ number }}
           </li>
         </ul>
@@ -22,7 +28,10 @@
       <ng-template [ngIf]="!onlyOdd">
         <p>Even</p>
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let number of evenNumbers">
+          <li
+            class="list-group-item"
+            *ngFor="let number of evenNumbers"
+            [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparant'}">
             {{ number }}
           </li>
         </ul>
