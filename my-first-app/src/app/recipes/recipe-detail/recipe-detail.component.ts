@@ -1,17 +1,20 @@
+import { ShoppingListService } from './../../shopping-list/shopping-list.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe: Recipe;
 
-  constructor() { }
+  constructor(private shoppingListService: ShoppingListService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onAddToShoppingList(): void {
+    this.shoppingListService.addIngredients(this.recipe.ingredients);
   }
-
 }
