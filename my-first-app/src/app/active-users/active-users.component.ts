@@ -1,5 +1,5 @@
 import { UsersService } from './../users-service.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-active-users',
