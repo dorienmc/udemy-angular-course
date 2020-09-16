@@ -24,10 +24,7 @@ export class ShoppingListService {
   }
 
   addIngredients(ingredients: Ingredient[]): void {
-    console.log(ingredients);
-    for (const ingredient of ingredients) {
-      console.log(ingredient);
-      this.addIngredient(ingredient);
-    }
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit(this.getIngredients());
   }
 }
