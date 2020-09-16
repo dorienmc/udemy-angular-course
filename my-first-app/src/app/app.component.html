@@ -4,6 +4,15 @@
       <app-active-users></app-active-users>
       <app-inactive-users></app-inactive-users>
     </div>
+    <h3>Transactions</h3>
+    <ul class="list-group">
+      <li class="list-group-item">
+        Active -> Inactive | {{ nTransitionsToInActive}}
+      </li>
+      <li class="list-group-item">
+        Inactive -> Active | {{ nTransitionsToActive}}
+      </li>
+    </ul>
     <!--
       Optimize this app by adding a UsersService which manages the active and inactive users.
 

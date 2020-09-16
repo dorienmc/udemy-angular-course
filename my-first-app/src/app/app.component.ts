@@ -1,3 +1,4 @@
+import { CounterService } from './counter.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(){}
+  nTransitionsToActive = 0;
+  nTransitionsToInActive = 0;
+
+  constructor(private counterService: CounterService) {
+    this.counterService.transitionToActive.subscribe(
+      (n: number) => {
+        this.nTransitionsToActive = n;
+      }
+    );
+    this.counterService.transitionToInactive.subscribe((n: number) => {
+      this.nTransitionsToInActive = n;
+    });
+  }
 }
