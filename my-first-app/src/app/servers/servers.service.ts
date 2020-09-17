@@ -22,11 +22,15 @@ export class ServersService {
   }
 
   getServer(id: number) {
+    console.log(id);
     const server = this.servers.find(
       (s) => {
         return s.id === id;
       }
     );
+    if (!server) {
+      console.log('Could not find server with id ' + id);
+    }
     return server;
   }
 
