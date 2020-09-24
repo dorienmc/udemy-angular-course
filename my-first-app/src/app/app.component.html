@@ -4,7 +4,13 @@
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" ngModel name="email">
+          <input
+            type="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            email>
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
@@ -18,7 +24,10 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" ngModel name="password">
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid">Submit</button>
       </form>
       <!-- Add a Form with the following Inputs (and Validators)
            1) Mail address (should not be empty and should be an email address)
