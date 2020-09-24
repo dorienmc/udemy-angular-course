@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
       hobbies: new FormArray([])
     });
   }
-  // Note: the "bind(this) is needed because the forbiddenNames is called from somewhere else and hence no link exists to the AppComponent"
+  // Note: the "bind(this)" is needed because the forbiddenNames is called from somewhere else and hence no link exists to the AppComponent
 
   onSubmit() {
     console.log(this.signupForm);
