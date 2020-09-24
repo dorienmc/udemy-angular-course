@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
       'email': new FormControl(null),
       'gender': new FormControl('female')
     });
+  }
 
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
