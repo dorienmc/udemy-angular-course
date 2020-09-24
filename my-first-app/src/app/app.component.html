@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div class="form-group">
           <label for="email">Email</label>
           <input
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
-          <select class="form-control" ngModel name="subscription">
+          <select class="form-control" [ngModel]="subscription" name="subscription">
             <option value="basic">Basic</option>
             <option value="advanced">Advanced</option>
             <option value="pro">Pro</option>
