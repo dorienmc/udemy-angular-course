@@ -10,7 +10,9 @@
             ngModel
             name="email"
             required
-            email>
+            email
+            #email="ngModel">
+          <span class="help-block" *ngIf="email.touched && !email.valid">Please enter a valid email!</span>
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
@@ -22,21 +24,29 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" ngModel name="password">
+          <input
+            type="password"
+            class="form-control"
+            ngModel
+            name="password"
+            #password="ngModel"
+            required>
+          <span class="help-block" *ngIf="password.touched && !password.valid">Password cannot be empty</span>
         </div>
+        <span class="help-block" *ngIf="f.touched && !f.valid!">Some fields are incorrect.</span>
         <button
           class="btn btn-primary"
           type="submit"
           [disabled]="!f.valid">Submit</button>
       </form>
       <!-- Add a Form with the following Inputs (and Validators)
-           1) Mail address (should not be empty and should be an email address)
+           x1) Mail address (should not be empty and should be an email address)
            2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
               Set "Advanced" as Default
-           3) A Password field (should not be empty)
-           4) A Submit Button
+           x3) A Password field (should not be empty)
+           x4) A Submit Button
 
-           Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+           x Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
 
            Upon submitting the form, you should simply print the Value of the Form to the Console.
            Optionally, display it in your template.
