@@ -29,11 +29,29 @@ export class AppComponent implements OnInit {
     this.signupForm.statusChanges.subscribe(
       (status) => console.log(status)
     );
+
+    // Set values
+    this.signupForm.setValue({
+      userData: {
+        username: 'Max',
+        email: 'max@test.com'
+      },
+      gender: 'male',
+      hobbies: []
+    });
+
+    // Patch value
+    this.signupForm.patchValue({
+      userData: {
+        username: 'Ann'
+      },
+    });
   }
   // Note: the "bind(this)" is needed because the forbiddenNames is called from somewhere else and hence no link exists to the AppComponent
 
   onSubmit() {
     console.log(this.signupForm);
+    this.signupForm.reset({gender: 'female'});
   }
 
   onAddHobby() {
