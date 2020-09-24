@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { stat } from 'fs';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,6 +22,13 @@ export class AppComponent implements OnInit {
       gender: new FormControl('female'),
       hobbies: new FormArray([])
     });
+
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // );
+    this.signupForm.statusChanges.subscribe(
+      (status) => console.log(status)
+    );
   }
   // Note: the "bind(this)" is needed because the forbiddenNames is called from somewhere else and hence no link exists to the AppComponent
 
