@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
-          <select class="form-control" [ngModel]="subscription" name="subscription">
+          <select class="form-control" [ngModel]="defaultSubscription" name="subscription">
             <option value="basic">Basic</option>
             <option value="advanced">Advanced</option>
             <option value="pro">Pro</option>
@@ -41,7 +41,7 @@
       </form>
       <!-- Add a Form with the following Inputs (and Validators)
            x1) Mail address (should not be empty and should be an email address)
-           2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+           x2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
               Set "Advanced" as Default
            x3) A Password field (should not be empty)
            x4) A Submit Button
@@ -54,11 +54,12 @@
     </div>
   </div>
   <hr>
-  <div class="row">
+  <div class="row" *ngIf="submitted">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <p><b>Email:</b> {{ email }}</p>
-      <p><b>Subscription:</b> {{ subscription }}</p>
-      <p><b>Password:</b> {{ password }}</p>
+      <h3>Your data</h3>
+      <p><b>Email:</b> {{ user.email }}</p>
+      <p><b>Subscription:</b> {{ user.subscription }}</p>
+      <p><b>Password:</b> {{ user.password }}</p>
     </div>
   </div>
 </div>

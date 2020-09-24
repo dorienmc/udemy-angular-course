@@ -8,14 +8,19 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('f') signupForm: NgForm;
-  email: string;
-  subscription = 'advanced';
-  password: string;
+  defaultSubscription = 'advanced';
+  user = {
+    email: '',
+    password: '',
+    subscription: ''
+  };
+  submitted = false;
 
   onSubmit() {
     console.log(this.signupForm.value);
-    this.email = this.signupForm.value.email;
-    this.subscription = this.signupForm.value.subscription;
-    this.password = this.signupForm.value.password;
+    this.user.email = this.signupForm.value.email;
+    this.user.subscription = this.signupForm.value.subscription;
+    this.user.password = this.signupForm.value.password;
+    this.submitted = true;
   }
 }
