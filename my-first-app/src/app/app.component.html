@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form>
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control">
+          <input type="email" class="form-control" ngModel name="email">
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
-          <select class="form-control">
+          <select class="form-control" ngModel name="subscription">
             <option value="basic">Basic</option>
             <option value="advanced">Advanced</option>
             <option value="pro">Pro</option>
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control">
+          <input type="password" class="form-control" ngModel name="password">
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
@@ -32,6 +32,14 @@
            Upon submitting the form, you should simply print the Value of the Form to the Console.
            Optionally, display it in your template.
       -->
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <p><b>Email:</b> {{ email }}</p>
+      <p><b>Subscription:</b> {{ subscription }}</p>
+      <p><b>Password:</b> {{ password }}</p>
     </div>
   </div>
 </div>
