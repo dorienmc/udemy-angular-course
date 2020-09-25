@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
       'projectStatus': new FormControl(null)
     });
   }
+
+  onSubmit() {
+    console.log(this.projectForm.value);
+  }
 }
 
 // <!--

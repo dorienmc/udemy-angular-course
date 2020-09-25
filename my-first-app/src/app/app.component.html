@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form [formGroup]="projectForm">
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="projectName">Project Name</label>
           <input type="text"
@@ -19,6 +19,7 @@
             <option *ngFor="let state of states" [value]="state"> {{ state }}</option>
           </select>
         </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
       </form>
       <!--
           Create a Form with the following Controls and Validators
