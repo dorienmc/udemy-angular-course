@@ -9,6 +9,7 @@
             formControlName="projectName"
             class="form-control">
             <span class="help-block" *ngIf="projectForm.get('projectName').invalid && projectForm.get('projectName').touched">
+              <span *ngIf="projectForm.get('projectName').errors['forbiddenName']">This name is forbidden! (customvalidator class)</span>
               <span *ngIf="projectForm.get('projectName').errors['nameIsForbidden']">This name is forbidden!</span>
               <span *ngIf="projectForm.get('projectName').errors['required']">Project name is required</span>
             </span>

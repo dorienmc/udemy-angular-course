@@ -1,3 +1,4 @@
+import { CustomValidators } from './custom-validators';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.projectForm = new FormGroup({
       // 'projectName': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
-      'projectName': new FormControl(null, [Validators.required], this.asyncForbiddenNames.bind(this)),
+      'projectName': new FormControl(null, [Validators.required, CustomValidators.invalidProjectName], this.asyncForbiddenNames.bind(this)),
       email: new FormControl(null, [Validators.required, Validators.email]),
       projectStatus: new FormControl(null),
     });
