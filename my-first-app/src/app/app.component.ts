@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.projectForm = new FormGroup({
-      'projectName': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'projectStatus': new FormControl(null)
+      // 'projectName': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
+      'projectName': new FormControl(null, [Validators.required], this.asyncForbiddenNames.bind(this)),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      projectStatus: new FormControl(null),
     });
   }
 
@@ -29,9 +31,17 @@ export class AppComponent implements OnInit {
     }
     return null;
   }
- }
 
-// <!--
-//           Add your own Validator which doesn't allow "Test" as a Project Name
-//           Also implement that Validator as an async Validator (replace the other one)
-//       -->
+  asyncForbiddenNames(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        if (this.forbiddenProjectNames.includes(control.value)) {
+          resolve({'nameIsForbidden': true});
+        } else {
+          resolve(null);
+        }
+      }, 2000);
+    });
+    return promise;
+  }
+ }
