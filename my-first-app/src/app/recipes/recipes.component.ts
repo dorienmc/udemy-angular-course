@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
-  providers: [RecipeService] // Automatically provides this to all sub components as well
+  //providers: [RecipeService] // Automatically provides this to all sub components as well
 })
 export class RecipesComponent implements OnInit {
   constructor() { }
