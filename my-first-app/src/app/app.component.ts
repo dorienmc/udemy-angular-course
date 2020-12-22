@@ -11,6 +11,7 @@ import { Post } from './post.model';
 export class AppComponent implements OnInit {
   loadedPosts = [];
   firebaseUrl = 'https://udemy-ng-database-default-rtdb.europe-west1.firebasedatabase.app/';
+  isFetching = false;
 
   constructor(private http: HttpClient) {}
 
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   private fetchPosts(): void {
+    this.isFetching = true;
     this.http
       .get<{[key: string]: Post}>(this.firebaseUrl + 'posts.json')
       .pipe(
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
         return postsArray;
       }))
       .subscribe(posts => {
+        this.isFetching = false;
         this.loadedPosts = posts;
     });
   }
