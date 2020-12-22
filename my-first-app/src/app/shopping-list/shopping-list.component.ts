@@ -27,4 +27,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     );
   }
 
+  // tslint:disable-next-line:typedef
+  onEditItem(index: number) {
+    this.shoppingListService.startedEditing.next(index);
+  }
+
 }
