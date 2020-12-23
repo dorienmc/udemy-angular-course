@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpEventType, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Post} from './post.model';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {Observable, Subject, throwError } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
@@ -17,7 +17,11 @@ export class PostsService {
     const postData: Post = {title, content};
     // Send Http request
     this.http
-      .post<{name: string}>(this.firebaseUrl, postData)
+      .post<{name: string}>(this.firebaseUrl, postData,
+        {
+          observe: 'response'
+        }
+      )
       .subscribe(responseData => {
         console.log(responseData);
       },
@@ -35,7 +39,8 @@ export class PostsService {
         this.firebaseUrl,
         {
           headers: new HttpHeaders({'Custom-Header': 'Hello' }),
-          params: searchParams
+          params: searchParams,
+          responseType: 'json'
         })
       .pipe(
         map(responseData => {
@@ -57,6 +62,15 @@ export class PostsService {
   }
 
   deletePosts(): Observable<any> {
-    return this.http.delete(this.firebaseUrl);
+    return this.http.delete(this.firebaseUrl,
+      {
+        observe: 'events',
+        responseType: 'text'
+      }).pipe(tap(event => {
+        console.log(event);
+        if (event.type === HttpEventType.Response) {
+          console.log(event.body);
+        }
+    }));
   }
 }
