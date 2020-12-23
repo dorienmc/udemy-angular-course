@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {RecipeService} from '../recipes/recipe.service';
 import {Recipe} from '../recipes/recipe.model';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
@@ -20,20 +21,21 @@ export class DataStorageService {
     );
   }
 
-  fetchRecipes(): void {
-    this.http.get<Recipe[]>(this.rootUrl + 'recipes.json')
-      .pipe(map( recipes => {
-        // Firebase doesn't store empty arrays, hence we have to put them bac
-        return recipes.map(recipe => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : []
-          };
-        });
-      }))
-      .subscribe(recipes => {
-        this.recipeService.setRecipes(recipes);
-      }
-    );
+  fetchRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.rootUrl + 'recipes.json')
+      .pipe(
+        map( recipes => {
+          // Firebase doesn't store empty arrays, hence we have to put them bac
+          return recipes.map(recipe => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : []
+            };
+          });
+        }),
+        tap(recipes => {
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
