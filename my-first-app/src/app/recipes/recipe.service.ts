@@ -90,6 +90,15 @@ export class RecipeService {
 
   constructor(private slService: ShoppingListService) {}
 
+  private notifyChanges(): void {
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  setRecipes(recipes: Recipe[]): void {
+    this.recipes = recipes;
+    this.notifyChanges();
+  }
+
   getRecipes(): Recipe[] {
     return this.recipes.slice(); // Slice copies the array
   }
@@ -104,16 +113,16 @@ export class RecipeService {
 
   addRecipe(recipe: Recipe): void {
     this.recipes.push(recipe);
-    this.recipesChanged.next(this.recipes.slice());
+    this.notifyChanges();
   }
 
   updateRecipe(index: number, newRecipe: Recipe): void {
     this.recipes[index] = newRecipe;
-    this.recipesChanged.next(this.recipes.slice());
+    this.notifyChanges();
   }
 
   deleteRecipe(index: number): void {
     this.recipes.splice(index, 1);
-    this.recipesChanged.next(this.recipes.slice());
+    this.notifyChanges();
   }
 }
